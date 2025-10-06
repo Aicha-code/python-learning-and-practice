@@ -70,7 +70,7 @@ Key behaviors
 - `add_time` accepts `start` like `3:00 PM`, `duration` like `3:10`, and an optional starting day. It returns a formatted string with the resulting time, day (if provided), and an indicator if the time falls on the next day or multiple days later.
 - The top-level `main()` function builds a simple Streamlit UI for interactive use.
 
-Usage terminal window)
+Usage (terminal window)
 - To run the Streamlit app locally (requires `streamlit` installed):
 
 ```
