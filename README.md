@@ -1,3 +1,4 @@
+
 # 🐍 Python Learning and Practice
 
 This repository is built as part of my journey to practice **Python programming** exploring data types, logic building, and various programming techniques. Each script focuses on a particular programming exercise from string parsing and formatting, object-oriented programming, and Streamlit apps for web.
