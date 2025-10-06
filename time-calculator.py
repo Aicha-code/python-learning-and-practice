@@ -1,24 +1,5 @@
 import streamlit as st
 
-def main():
-    st.title("🕒 Time Calculator")
-    st.write("Add a duration to a start time and get the resulting time (precise to the minute).")
-
-    col1, col2 = st.columns(2)
-    with col1:
-        input_start = st.text_input("Start Time (e.g., 3:00 PM)")
-    with col2:
-        input_duration = st.text_input("Duration (e.g., 3:10)")
-
-    days = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    input_day = st.selectbox("Starting Day (optional)", days)
-
-    if st.button("Calculate"):
-        if input_start and input_duration:
-            result = add_time(input_start, input_duration, input_day if input_day else None)
-            st.success(f"{result}")
-        else:
-            st.warning("Please fill in both start time and duration.")
 
 def add_time(start, duration, day_of_week=None):
     # Split start time
@@ -85,6 +66,27 @@ def add_time(start, duration, day_of_week=None):
         return new_time
     except Exception as e:
         return "Error in input format. Please ensure the start time and duration are correctly formatted."
+    
+def main():
+    st.title("🕒 Time Calculator")
+    st.write("Add a duration to a start time and get the resulting time (precise to the minute).")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        input_start = st.text_input("Start Time (e.g., 3:00 PM)")
+    with col2:
+        input_duration = st.text_input("Duration (e.g., 3:10)")
+
+    days = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    input_day = st.selectbox("Starting Day (optional)", days)
+
+    if st.button("Calculate"):
+        if input_start and input_duration:
+            result = add_time(input_start, input_duration, input_day if input_day else None)
+            st.success(f"{result}")
+        else:
+            st.warning("Please fill in both start time and duration.")
+
 
 if __name__ == "__main__":
     main()
