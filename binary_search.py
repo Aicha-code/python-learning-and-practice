@@ -8,7 +8,6 @@ def find_number(numbers, target, start_index=0):
     if target == numbers[middle_index]:
         return middle_index+ start_index
     elif target < numbers[middle_index]:
-        print("Searching in the left half aka list: ", numbers[0:middle_index])
         return find_number(numbers[0:middle_index], target, start_index)
     elif target > numbers[middle_index]:
         return find_number(numbers[middle_index+1:], target, start_index + middle_index + 1)
