@@ -3,7 +3,7 @@ def find_number(numbers, target, start_index=0):
     if numbers is None or len(numbers) == 0:
         return -1
     middle_index = len(numbers) // 2
-    print(f"Middle index is: {middle_index}, Middle element is: {numbers[middle_index]}")
+    # print(f"Middle index is: {middle_index}, Middle element is: {numbers[middle_index]}")
 
     if target == numbers[middle_index]:
         return middle_index+ start_index
@@ -13,16 +13,22 @@ def find_number(numbers, target, start_index=0):
         return find_number(numbers[middle_index+1:], target, start_index + middle_index + 1)
     else:
         return -1
-def add_number(number, numbers):
-    numbers.append(number)
+def add_number(target, numbers):
+    #add target in teh right position in the list
+    for i in range(len(numbers)):
+        if numbers[i] > target:
+            numbers.insert(i, target)
+            return numbers
+
+    numbers.append(target)
     return numbers
-    
+
 if __name__ == "__main__":
     print("Welcome, this is a number finder program.\n You can search for a number in a list.")
     list_of_numbers = input("Enter an ordered list of numbers separated by spaces: ")
     numbers = list(map(int, list_of_numbers.split()))
     print("The list of numbers you entered is:", numbers)
-    print(f"length of the list is: {len(numbers)}")
+    # print(f"length of the list is: {len(numbers)}")
 
     target = int(input("Enter the number you want to find: "))
     result = find_number(numbers, target)
