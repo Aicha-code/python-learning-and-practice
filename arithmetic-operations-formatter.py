@@ -1,15 +1,23 @@
 def main():
+    # Welcome message and instructions
     print("Welcome to the Arithmetic Formatter!\n")
     print("You can enter up to five arithmetic problems involving '+', '-', '/' or '*'.")
     print("Each problem should be in the format: 'operand1 operator operand2' (e.g., '32 + 698').")
+    print("To input multiple operations, separate them with commas (e.g., '32 + 698, 1 - 380').")
+
+    # take operations input from the user, and process it
     operation= input("Enter the arithmetic problems separated by commas as in the example above: ")
     problems = [problem.strip() for problem in operation.split(",")]
+
+    # Ask the user if they want to display the answers
     show_answers = input("Do you want to display the answers? (y/n): ").strip().lower() == 'y'
-    arranged_problems = arithmetic_arranger(problems, show_answers)
+    arranged_problems = arithmetic_arranger(problems, show_answers) # call the formatter function to format the problems and optionally show answers
+    
     print(arranged_problems)
 
 def arithmetic_arranger(problems, show_answers=False):
     try:
+        # check the number of problems, return an error if it exceeds 5
         if len(problems) >5:
             return "Error: Too many problems."
         divided_problems=[
@@ -21,6 +29,7 @@ def arithmetic_arranger(problems, show_answers=False):
         lines=[]
         answers=[]
 
+        # Process each problem, validate the operands and operators, and format accordingly
         for i in range(len(divided_problems)):
             first_operand = divided_problems[i][0]
             operator = divided_problems[i][1]
@@ -48,14 +57,19 @@ def arithmetic_arranger(problems, show_answers=False):
                     result = f"{int(first_operand) / int(second_operand):.2f}"
                 
                 answers.append(result.rjust(width))
+        # join the formatted components with proper spacing        
         arranged_first_line = "    ".join(first_operands)
         arranged_second_line = "    ".join(operators)
         arranged_lines = "    ".join(lines)
+        # combine all parts into the final formatted string
         problem=  arranged_first_line + "\n" + arranged_second_line + "\n" + arranged_lines
         if show_answers:
             problem = problem+ "\n" + "    ".join(answers)
 
+        # Return the final arranged problems string
         return problem
+    
+    # add exception handling for various error cases
     except IndexError:
             return "Error: Invalid problem format. Try again!"
     except ZeroDivisionError:
