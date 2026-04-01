@@ -81,3 +81,57 @@ streamlit run .\time-calculator.py
 
 - Or call access it directly form the web at : 
 ( https://python-learning-and-practice-7ahb7l8stvfus5rdthezp8.streamlit.app/ )
+
+
+### `binary_search.py`
+
+Purpose
+- A small recursive binary search utility and tiny interactive program to find a target number inside an ordered list of integers entered by the user.
+
+Key behaviors
+- `find_number(numbers, target, start_index=0)` performs a recursive binary search on the list slice `numbers` and returns the index of `target` relative to the original list. It prints simple debug messages (middle index and which half is being searched).
+- If the target is not found the function returns `-1`.
+- `add_number(number, numbers)` appends the given number to the provided list and returns it (used in the interactive flow when the user chooses to add a missing number).
+
+Usage (PowerShell / interactive)
+1. Run the script:
+
+```powershell
+python .\binary_search.py
+```
+
+2. Follow the prompts to enter an ordered list of numbers (space-separated) and a target number to search for. Example interactive session:
+
+```
+Enter an ordered list of numbers separated by spaces: 1 3 5 7 9
+Enter the number you want to find: 7
+Number found at index: 3
+```
+
+Notes & suggestions
+- The program expects the input list to be ordered (ascending). If the list is not sorted the binary search will produce incorrect results.
+- Because the implementation is recursive and slices the list for each recursive call, it allocates new list objects and can be less efficient for large lists; an iterative index-based implementation would be more memory-efficient.
+
+### `arithmetic-operations-formatter.py`
+
+Purpose
+- This program formats and optionally solves simple arithmetic problems.
+
+Key behaviors:
+- You can enter up to 5 arithmetic problems at once.
+- Supported operators: +, -, *, /
+- Each problem must follow this format:
+  operand operator operand
+  Example: 32 + 698
+
+- To enter multiple problems, separate them with commas:
+  Example:
+  32 + 8, 1 - 3801, 9999 * 9
+
+- You will then be asked if you want to display the answers.
+
+RULES:
+- Only digits are allowed (no letters or symbols in numbers)
+- Numbers cannot be more than 4 digits long
+- Maximum of 5 problems
+- Division by zero is not allowed
