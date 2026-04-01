@@ -112,26 +112,5 @@ Notes & suggestions
 - The program expects the input list to be ordered (ascending). If the list is not sorted the binary search will produce incorrect results.
 - Because the implementation is recursive and slices the list for each recursive call, it allocates new list objects and can be less efficient for large lists; an iterative index-based implementation would be more memory-efficient.
 
-### `arithmetic-operations-formatter.py`
 
-Purpose
-- This program formats and optionally solves simple arithmetic problems.
 
-Key behaviors:
-- You can enter up to 5 arithmetic problems at once.
-- Supported operators: +, -, *, /
-- Each problem must follow this format:
-  operand operator operand
-  Example: 32 + 698
-
-- To enter multiple problems, separate them with commas:
-  Example:
-  32 + 8, 1 - 3801, 9999 * 9
-
-- You will then be asked if you want to display the answers.
-
-RULES:
-- Only digits are allowed (no letters or symbols in numbers)
-- Numbers cannot be more than 4 digits long
-- Maximum of 5 problems
-- Division by zero is not allowed
