@@ -73,19 +73,21 @@ def main():
 
     col1, col2 = st.columns(2)
     with col1:
-        input_start = st.text_input("Start Time (e.g., 3:00 PM)")
+        start_hour = st.number_input("Start Hour", min_value=1, max_value=12, value=3, step=1, format="%d")
+        start_minute = st.number_input("Start Minute", min_value=0, max_value=59, value=0, step=1, format="%02d")
+        start_period = st.selectbox("AM/PM", ["AM", "PM"])
     with col2:
-        input_duration = st.text_input("Duration (e.g., 3:10)")
+        duration_hours = st.number_input("Duration (Hours)", min_value=0, max_value=100, value=3, step=1, format="%d")
+        duration_minutes = st.number_input("Duration (Minutes)", min_value=0, max_value=59, value=10, step=1, format="%02d")
 
     days = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     input_day = st.selectbox("Starting Day (optional)", days)
 
     if st.button("Calculate"):
-        if input_start and input_duration:
-            result = add_time(input_start, input_duration, input_day if input_day else None)
-            st.success(f"{result}")
-        else:
-            st.warning("Please fill in both start time and duration.")
+        input_start = f"{start_hour}:{start_minute:02d} {start_period}"
+        input_duration = f"{duration_hours}:{duration_minutes:02d}"
+        result = add_time(input_start, input_duration, input_day if input_day else None)
+        st.success(f"{result}")
 
 
 if __name__ == "__main__":
